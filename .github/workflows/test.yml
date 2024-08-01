@@ -26,12 +26,12 @@ jobs:
         run: |
           DOCKERHUB_PASSWORD=`aws secretsmanager get-secret-value --secret-id jenkins-staging-dockerhub-credential --query SecretString --output text`
           echo "dockerhub-password=$DOCKERHUB_PASSWORD" >> $GITHUB_OUTPUT
-          echo "::add-mask::${{ steps.retrieve-value.outputs.dockerhub-password }}"
+          echo "::add-mask::${{ steps.retrieve-values.outputs.dockerhub-password }}"
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ steps.retrieve-value.outputs.dockerhub-password }}
+          password: ${{ steps.retrieve-values.outputs.dockerhub-password }}
       - name: Logout to DockerHub
         if: always()
         run: docker logout
