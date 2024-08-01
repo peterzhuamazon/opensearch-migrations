@@ -21,6 +21,8 @@ jobs:
           aws-region: us-east-1
       - name: Retrieve Values
         id: retrieve-values
+        outputs:
+          DOCKERHUB_PASSWORD: ${{ steps.step-build-test-linux.outputs.DOCKERHUB_PASSWORD }}
         run: |
           echo "DOCKERHUB_PASSWORD=`aws secretsmanager get-secret-value --secret-id jenkins-staging-dockerhub-credential --query SecretString --output text`" >> $GITHUB_OUTPUT
           echo "::add-mask::${{ steps.retrieve-value.outputs.DOCKERHUB_PASSWORD }}"
