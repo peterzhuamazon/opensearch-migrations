@@ -14,7 +14,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.MIGRATIONS_DOCKER_ROLE }}
-          aws-region: $${{ secrets.MIGRATIONS_DOCKER_ROLE_REGION }}
+          aws-region: us-east-1
       - name: Retrieve Values
         run: |
           export DOCKERHUB_USERNAME=`aws secretsmanager describe-secret --secret-id jenkins-staging-dockerhub-credential --query "Tags[?Key=='jenkins:credentials:username'].Value" --output text`
