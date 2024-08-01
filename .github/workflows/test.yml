@@ -1,6 +1,5 @@
-name: Release drafter
+name: test
 
-# Push events to every tag not containing "/"
 on:
   push:
     branches:
@@ -12,7 +11,7 @@ jobs:
     if: github.repository == 'peterzhuamazon/opensearch-migrations'
     runs-on: ubuntu-latest
     steps:
-      - uses: aws-actions/configure-aws-credentials@v2
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.MIGRATIONS_DOCKER_ROLE }}
           aws-region: $${{ secrets.MIGRATIONS_DOCKER_ROLE_REGION }}
