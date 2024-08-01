@@ -14,7 +14,7 @@ jobs:
     name: Draft a release
     if: github.repository == 'peterzhuamazon/opensearch-migrations'
     outputs:
-      DOCKERHUB_PASSWORD: ${{ steps.step-build-test-linux.outputs.DOCKERHUB_PASSWORD }}
+      DOCKERHUB_PASSWORD: ${{ steps.retrieve-values.outputs.DOCKERHUB_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
