@@ -5,6 +5,10 @@ on:
     branches:
       - enable-aws-assume 
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   draft-a-release:
     name: Draft a release
